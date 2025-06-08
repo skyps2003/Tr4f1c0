@@ -44,7 +44,7 @@ function enviarImagen() {
   const formData = new FormData();
   formData.append("file", archivo);
 
-  fetch("http://127.0.0.1:8000/predict/", {
+  fetch("https://tr4f1c0.onrender.com/predict/", {
     method: "POST",
     body: formData
   })
@@ -114,7 +114,7 @@ function procesarFrame() {
       const formData = new FormData();
       formData.append("file", blob, "frame.jpg");
 
-      fetch("http://127.0.0.1:8000/predict/realtime/", {
+      fetch("https://tr4f1c0.onrender.com/predict/realtime/", {
         method: "POST",
         body: formData
       })

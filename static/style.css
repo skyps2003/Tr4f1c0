@@ -131,8 +131,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/imgens/CR7.jpg') no-repeat center center;
-  background-size: cover;
+  /*background: url('/imgens/CR7.jpg') no-repeat center center;
+  */background-size: cover;
   filter: blur(8px) brightness(0.6);
   z-index: 0;
 }
@@ -534,8 +534,8 @@ body {
 .section.ex::before {
   position: absolute;
   inset: 0;
-  background: url('/imagens/CR7J.jpeg') no-repeat center center;
-  background-size: cover;
+  /*background: url('/imagens/CR7J.jpeg') no-repeat center center;
+*/  background-size: cover;
   filter: blur(8px) brightness(0.6);
   z-index: 0;
   content: "";
@@ -741,8 +741,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('/imagens/CR7A.jpeg') no-repeat center center;
-  background-size: cover;
+  /*background: url('/imagens/CR7A.jpeg') no-repeat center center;
+ */ background-size: cover;
   filter: blur(8px) brightness(0.6);
   z-index: 
   0;
@@ -903,3 +903,75 @@ footer {
 footer p {
   margin: 0;
 }
+/* ...existing code... */
+
+/* Mejoras responsive para el formulario de contacto y secciones en móvil */
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 30px 2vw;
+    min-height: unset;
+  }
+  .contact-container {
+    flex-direction: column;
+    width: 98vw;
+    height: auto;
+    padding: 16px 4vw;
+    gap: 16px;
+    min-width: 0;
+    box-shadow: none;
+  }
+  .contact-text, .contact-form {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.98rem;
+    padding: 0;
+  }
+  .contact-text h2 {
+    font-size: 1.1rem;
+  }
+  .contact-social {
+    position: static;
+    transform: none;
+    margin-top: 18px;
+    margin-bottom: 0;
+    gap: 14px;
+    font-size: 18px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .contact-form button {
+    font-size: 0.98rem;
+    padding: 10px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.98rem;
+    padding: 8px;
+  }
+  .section.light,
+  .section.ex {
+    padding: 18px 2vw;
+    min-height: 340px;
+  }
+  #preview,
+  #camara video,
+  #camara canvas {
+    width: 98vw;
+    height: 54vw;
+    min-width: 120px;
+    min-height: 80px;
+    max-width: 98vw;
+    max-height: 60vw;
+  }
+  .competencias-title {
+    font-size: 1.3rem;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}
+
+/* ...existing code... */
