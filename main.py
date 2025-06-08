@@ -7,6 +7,7 @@ import tensorflow as tf
 from PIL import Image
 import io
 import uvicorn
+import os
 
 app = FastAPI()
 
@@ -129,7 +130,7 @@ async def predict_realtime(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Error en tiempo real: {str(e)}")
 
 # Ejecutar el servidor si se corre directamente
+
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT", 8000))  # Render define PORT
     uvicorn.run(app, host="0.0.0.0", port=port)
