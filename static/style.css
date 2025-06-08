@@ -131,7 +131,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../imgens/CR7.jpg') no-repeat center center;
+  background: url('../static/imgens/CR7.jpg') no-repeat center center;
   background-size: cover;
   filter: blur(8px) brightness(0.6);
   z-index: 0;
