@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reconocimiento de Señales de Tránsito</title>
-   <link rel="icon" href="imgens/IA.png" type="image/x-icon" />
+   <link rel="icon" href="../imgens/IA.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="../static/style.css">
 </head>
@@ -48,7 +48,7 @@
     <i class="fas fa-upload"></i> Sube una Imagen
   </h2>
   <input type="file" id="imagen" accept="image/*" />
-  <button onclick="enviarImagen()">Clasificar</button>
+  <button onclick="enviarImagen()" aria-label="Clasificar imagen subida">Clasificar</button>
   <div id="preview" style="margin-top: 20px;"></div>
   <p id="resultado-imagen">Esperando predicción...</p>
 </section>
@@ -67,11 +67,11 @@
 </section>
 
   <footer>
-    <p>© 2025 Luis</p>
+    <p>© 2025 Computacion en la nube </p>
   </footer>
 
+<script src="../static/script.js" defer></script>
 
-<script src="../static/script.js">
 </script>
 </body>
 </html>

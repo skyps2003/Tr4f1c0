@@ -7,23 +7,19 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("signsContainer");
-    const allItems = Array.from(container.children);
-
-    // Baraja aleatoriamente las señales
-    const shuffled = allItems.sort(() => 0.5 - Math.random());
-
-    // Selecciona solo 4
-    const selected = shuffled.slice(0, 4);
-
-    // Limpia el contenedor y agrega solo las 4 seleccionadas
-    container.innerHTML = "";
-    selected.forEach(el => container.appendChild(el));
-  });
-
-
+document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', function() {
+      menu.classList.toggle('show');
+    });
+    // Opcional: cerrar menú al hacer click en un enlace
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('show'));
+    });
+  }
+});
 // ======= SUBIR IMAGEN =======
 function enviarImagen() {
   const archivo = document.getElementById("imagen").files[0];
@@ -43,7 +39,7 @@ function enviarImagen() {
 
   const formData = new FormData();
   formData.append("file", archivo);
-
+/* */
   fetch("https://tr4f1c0.onrender.com/predict/", {
     method: "POST",
     body: formData
