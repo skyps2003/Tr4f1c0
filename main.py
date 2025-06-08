@@ -1,24 +1,34 @@
 # archivo: main.py
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 import numpy as np
-from tensorflow.keras.preprocessing import image
 import tensorflow as tf
+from tensorflow.keras.preprocessing import image
 from PIL import Image
 import io
 import uvicorn
 import os
 
+# Crear app FastAPI
 app = FastAPI()
 
-# Permitir CORS para consumir desde el frontend
+# Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En producción usar: ["http://localhost:5500"]
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Montar archivos estáticos (CSS, JS, imágenes)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Directorio de plantillas HTML
+templates = Jinja2Templates(directory="templates")
 
 # Cargar modelo
 modelo_json_path = "Modelo train v2/senales_trafico_modelo.json"
@@ -78,10 +88,14 @@ clases_dict = {
     43: 'Fin de la prohibición de adelantar vehículos de más de 3.5 toneladas'
 }
 
-# Ruta de predicción
+# Ruta principal para mostrar el HTML
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+# Ruta de predicción simple
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
-
     try:
         if not file.content_type.startswith("image/"):
             raise HTTPException(status_code=400, detail="El archivo debe ser una imagen")
@@ -101,8 +115,7 @@ async def predict(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al procesar la imagen: {str(e)}")
 
-
-
+# Ruta de predicción con confianza
 @app.post("/predict/realtime/")
 async def predict_realtime(file: UploadFile = File(...)):
     try:
@@ -129,8 +142,7 @@ async def predict_realtime(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error en tiempo real: {str(e)}")
 
-# Ejecutar el servidor si se corre directamente
-
+# Ejecutar en modo local
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Render define PORT
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT", 8000))  # Render define PORT automáticamente
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)

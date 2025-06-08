@@ -70,15 +70,27 @@ let ejecutando = true;
 
 async function iniciarCamara() {
   ejecutando = true;
-  // Detener stream anterior si existe
+
   if (stream) {
     stream.getTracks().forEach(track => track.stop());
   }
+
+  try {
+    const permisos = await navigator.permissions.query({ name: 'camera' });
+    if (permisos.state === "denied") {
+      resultadoCamara.textContent = "🚫 Permiso denegado para usar la cámara.";
+      return;
+    }
+  } catch (e) {
+    console.warn("El navegador no soporta permissions.query:", e);
+  }
+
   const constraints = {
     video: {
       facingMode: usandoFrontal ? "user" : "environment"
     }
   };
+
   try {
     stream = await navigator.mediaDevices.getUserMedia(constraints);
     video.srcObject = stream;
@@ -88,6 +100,7 @@ async function iniciarCamara() {
     console.error(err);
   }
 }
+
 
 function procesarFrame() {
   if (!ejecutando) return;
