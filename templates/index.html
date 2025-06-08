@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reconocimiento de Señales de Tránsito</title>
+   <link rel="icon" href="imgens/IA.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="navbar-center">
+      <div class="logo"><i class="fa-solid fa-hexagon-nodes"></i></div>
+      <nav class="menu">
+        <a href="#inicio" class="active">Inicio</a>
+        <!--<a href="#informacion">Señales de Tráfico</a>-->
+        <a href="#subir">Subir Imagen</a>
+        <a href="#camara">Reconocimiento en Vivo</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+  <!-- ssssssssss -->
+  <section class="hero" id="inicio">
+    <div class="left">
+      <h1>
+        PROYECTO<br />
+        VISIOTRAFIC<span class="dot">.</span>
+      </h1>
+      <p class="subtitle">
+        Sistema inteligente para el reconocimiento de señales de tránsito<br />
+        usando redes neuronales convolucionales y visión por computadora.
+      </p>
+    </div>
+    <div class="right"></div>
+  </section>
+<!-- Sección SUBIR IMAGEN -->
+<section class="section light" id="subir">
+  <h2 class="competencias-title">
+    <i class="fas fa-upload"></i> Sube una Imagen
+  </h2>
+  <input type="file" id="imagen" accept="image/*" />
+  <button onclick="enviarImagen()">Clasificar</button>
+  <div id="preview" style="margin-top: 20px;"></div>
+  <p id="resultado-imagen">Esperando predicción...</p>
+</section>
+
+<!-- Sección TIEMPO REAL -->
+<section class="section ex" id="camara">
+  <h2 class="competencias-title">Reconocimiento en Tiempo Real</h2>
+  <p>Activa tu cámara para detectar señales de tránsito automáticamente.</p>
+  <video id="video" width="400" height="300" autoplay muted playsinline></video>
+  <canvas id="canvas" width="400" height="300" style="display: none;"></canvas>
+  <div id="resultado-camara">Esperando predicción...</div>
+  <div style="display: flex; gap: 10px; justify-content: center;">
+    <button id="btn-cambiar-camara" type="button">Cambiar cámara</button>
+    <button id="btn-detener">Detener cámara</button>
+  </div>
+</section>
+  <!-- Contacto -->
+  <section id="contacto" class="contact-section">
+    <div class="contact-container">
+      <div class="contact-text">
+        <h2>Contacto</h2>
+        <p>¿Tienes preguntas o sugerencias sobre el sistema? Contáctame.</p>
+        <p>Email: 211181@unamba.edu.pe</p>
+        <p>Tel: 988 605 555</p>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Nombre" required>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <textarea placeholder="Mensaje" rows="4" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div class="contact-social">
+        <a href="https://x.com/LoayzaNarvaez"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Luis</p>
+  </footer>
+
+
+<script src="../static/script.js">
+</script>
+</body>
+</html>
