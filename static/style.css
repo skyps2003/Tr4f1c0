@@ -884,7 +884,60 @@ body {
     width: 100%;
   }
 }
-
+/* Mejora visual del formulario de contacto en móvil */
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 10px 0;
+  }
+  .contact-container {
+    padding: 10px 2vw;
+    margin: 10px 0;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100vw;
+    min-width: 0;
+    gap: 10px;
+  }
+  .contact-text {
+    font-size: 0.98rem;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .contact-text h2 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .contact-form {
+    gap: 8px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+    padding: 8px;
+  }
+  .contact-form button {
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    border-radius: 4px;
+  }
+  .contact-social {
+    position: static;
+    transform: none;
+    margin-top: 14px;
+    margin-bottom: 0;
+    gap: 18px;
+    font-size: 22px;
+    width: 100%;
+    justify-content: center;
+    background: none;
+  }
+}
 
 /********************************** F O O T E R************************************/
 footer {
