@@ -131,7 +131,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../static/imgens/cr7.jpeg') no-repeat center center;
+  background: url('../static/imgens/LOGO.png') no-repeat center center;
   background-size: cover;
   filter: blur(8px) brightness(0.6);
   z-index: 0;
